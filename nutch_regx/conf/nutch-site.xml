@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+
+    <property>
+        <name>http.agent.name</name>
+        <value>drqweqadaswerre</value>
+    </property>
+
+  	<property>
+  		<name>http.agent.rotate</name>
+  		<value>true</value>
+ 	</property>
+
+ 	<property>
+  		<name>http.agent.rotate.file</name>
+  		<value>agents.txt</value>  
+	</property>
+
+	<property>
+  		<name>http.robot.rules.whitelist</name>
+  		<value>http://www.iguntrade.com, http://www.jasonsguns.com, http://www.ksl.com, http://www.kyclassifieds.com, http://www.midutahradio.com/tradio, http://www.midwestgtrader.com, http://www.montanagunclassifieds.com, http://www.montanagunsforsale.com, https://www.mountaintrader.com, http://www.msguntrader.com, http://www.ncgunads.com, http://www.newmexicoguntrader.com, http://www.nextechclassifieds.com, http://www.sanjoseguntrader.com, http://www.tell-n-sell.com, http://www.tennesseegunexchange.com, http://www.theoutdoorstrader.com, https://www.tradesnsales.com/, http://www.upstateguntrader.com, https://www.vci-classifieds.com/, http://www.zidaho.com, http://bmc-tactical.com, http://cdn1.editmysite.com, http://www.kentuckyhomes.biz, http://www.rioranchoarmory.com, https://app.mt.gov, https://www.facebook.com, www.nba.com, www.stolenweapon.com,www.wantaddigest.com,
+            www.alaskaslist.com,www.billingsthriftynickel.com,www.floridagunclassifieds.com,www.carolinabargaintrader.net,www.floridaguntrader.com,www.abqjournal.com,jetpack.wordpress.com,pixel.quantserve.com,www.gunidaho.com,www.electronictransfer.com,www.wikiarms.com,www.ncgunads.com,www.planopawnshop.net,www.quanticotactical.com,www.laser-ammo.com,www.dallasguns.com,www.gunguysreviews.com,public-api.wordpress.com,www.carolinabargaintrader.net,success.abqjournal.com,www.carolinaboattrader.com,www.hawaiiguntrader.com,masafirearms.com,meyerweb.com,sellgunsforcash.com,premiergunshows.com,cdn5.luckygunner.com,www.classifieds.al.com,www.comprayventadearmas.com,best-concealed-carry.com,bestconcealedcarry.net,pro32.ap.org,  http://gunlistings.spreadshirt.com,
+        http://secure.quantserve.com,
+        http://www.facebook.com,
+        http://www.iwanna.com/images,
+        http://www.iwanna.com/uploads,
+        http://www.nationalguntrader.com,
+        http://www.recycler.com,
+        http://www.shooting.org</value> 	
+	</property>
+
+	<property>
+  		<name>fetcher.server.delay</name>
+  		<value>0.5</value>
+	</property>
+
+	<property>
+  		<name>fetcher.threads.fetch</name>
+ 		 <value>5</value>
+  	</property>
+
+
+
+
+
+<!--  	<property>
+  		<name>plugin.includes</name>
+  		<value>protocol-(httpclient|ftp|file|http)|urlfilter-(model|regex)|parse-(html|tika)|scoring-similarity|index-(basic|anchor)|indexer-solr|urlnormalizer-(pass|regex|basic)</value>
+ 
+	</property> -->
+
+  <property>
+      <name>plugin.includes</name>
+      <value>protocol-(httpclient|ftp|file|http)|urlfilter-regex|parse-(html|tika)|index-(basic|anchor)|indexer-solr|scoring-opic|urlnormalizer-(pass|regex|basic)</value>
+ 
+  </property>
+
+  <property>
+        <name>http.content.limit</name>
+        <value>100000000</value>
+        <description>The length limit for downloaded content using the http://
+            protocol, in bytes. If this value is nonnegative (>=0), content longer
+            than it will be truncated; otherwise, no truncation at all. Do not
+            confuse this setting with the file.content.limit setting.
+        </description>
+  </property>
+
+    <!-- ftp properties -->
+  <property>
+        <name>ftp.content.limit</name>
+        <value>100000000</value>
+        <description>The length limit for downloaded content, in bytes.
+            If this value is nonnegative (>=0), content longer than it will be truncated;
+            otherwise, no truncation at all.
+            Caution: classical ftp RFCs never defines partial transfer and, in fact,
+            some ftp servers out there do not handle client side forced close-down very
+            well. Our implementation tries its best to handle such situations smoothly.
+        </description>
+  </property>
+
+  <property>
+        <name>file.content.limit</name>
+        <value>100000000</value>
+  
+  </property>
+
+  <property>
+      <name>fetcher.threads.per.queue</name>
+      <value>3</value>
+  <description>This number is the maximum number of threads that
+    should be allowed to access a queue at one time. Setting it to 
+    a value > 1 will cause the Crawl-Delay value from robots.txt to
+    be ignored and the value of fetcher.server.min.delay to be used
+    as a delay between successive requests to the same server instead 
+    of fetcher.server.delay.
+   </description>
+</property>
+
+<property>
+      <name>fetcher.server.min.delay</name>
+      <value>0.5</value>
+  <description>The minimum number of seconds the fetcher will delay between 
+  successive requests to the same server. This value is applicable ONLY
+  if fetcher.threads.per.queue is greater than 1 (i.e. the host blocking
+  is turned off).</description>
+</property>
+
+<property>
+  <name>http.timeout</name>
+  <value>5000</value>
+  <description>The default network timeout, in milliseconds.</description>
+</property>
+
+
+<!-- 
+<property>
+    <name>scoring.similarity.model.path</name>
+    <value>goldstandard.txt</value>
+</property>
+
+<property>
+    <name>scoring.similarity.stopword.file</name>
+    <value>stopwords.txt</value>
+</property> -->
+
+<!-- <property>
+<name>parser.modelfilter.trainfile</name>
+<value>naivebayes-train.txt</value>
+<description>
+</description>
+</property>
+
+<property>
+<name>parser.modelfilter.dictionaryfile</name>
+<value>naivebayes-wordlist.txt</value>
+<description>
+</description>
+</property>
+
+<property>
+<name>parser.modelfilter</name>
+<value>true</value>
+<description>
+</description>
+</property> -->
+<!--   <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/volumes/xuwudrive2/tmp</value>
+  </property> -->
+
+</configuration>
