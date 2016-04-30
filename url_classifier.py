@@ -1,4 +1,25 @@
 
+# encoding: utf-8
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# $Id$
+
+#Evaluate Focused Crawling in Nutch in the Weapons Domain
+#by Xu Wu(xwstudio.com)
 
 import sys
 reload(sys)  # Reload does the trick!
@@ -8,12 +29,12 @@ import json
 import requests
 import unicodedata
 
-
+#Path to data files under segments folder
 data_path = '/Users/xuwu/Documents/590DR/searchengine/nutch-sim/runtime/local/crawl_sim_new/segments/20160228232610/parse_data/part-00000/data'
 text_path = '/Users/xuwu/Documents/590DR/searchengine/nutch-sim/runtime/local/crawl_sim_new/segments/20160228232610/parse_text/part-00000/data'
 
 # We define the variables need to call the API
-# Register in www.meaningCloud to get the key
+# Register in www.meaningCloud.com to get the key
 api = 'http://api.meaningcloud.com/class-1.1'
 key = ''
 # url = 'https://www.gunsamerica.com/blog/weaponized-police-drones-to-hit-streets-of-north-dakota/'
@@ -36,9 +57,12 @@ urlMap = {}
 text_file=open("sim2.txt", "w")
 #text_file.write("Total number of urls: %d" % totUrls)
 
+# Counters
 weapon_counter=0
 notfound=0
 error_count=0
+
+# IPTC codes which are related to weapons, find more details here: http://cv.iptc.org/newscodes/subjectcode
 codeDict=['11001006','11016004','15051000','16012000']
 
 for url in data:
@@ -91,13 +115,14 @@ for item in text:
 			print "\n"	
 
 
-
+# output summary:
 print "******statics*************"
 print "weapon related: ",weapon_counter
 print "total :",len(urlMap)
 
 nonclass_counter=0
 
+# Write to files
 for key in urlMap:
 	if urlMap[key]!= "Non-classification":
 		text_file.write("{0}\n\n".format(urlMap[key]))
