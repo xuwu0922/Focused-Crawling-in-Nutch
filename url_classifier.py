@@ -19,7 +19,7 @@
 # $Id$
 
 #Evaluate Focused Crawling in Nutch in the Weapons Domain
-#by Xu Wu(xwstudio.com)
+#by Xu Wu(www.xwstudio.com)
 
 import sys
 reload(sys)  # Reload does the trick!
